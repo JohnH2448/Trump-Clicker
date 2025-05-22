@@ -12,6 +12,7 @@ sound.volume = 0.5;
 
 const trump = document.getElementById("mainButtonImage");
 const cash = document.getElementById('cash');
+const bButton = document.getElementsByClassName("bButton");
 
 // Event Listeners
 trump.addEventListener("mouseenter", () => {
@@ -21,6 +22,13 @@ trump.addEventListener("mouseenter", () => {
 trump.addEventListener("mouseleave", () => {
   mainHover=false;
 });
+
+for (let btn of bButton) {
+  btn.addEventListener("mouseenter", () => {
+    new Audio('Hover.mp3').play();
+  });
+}
+
 trump.addEventListener("click", () => {
   tSMultiplier=tSMultiplier+0.15;
   Cash+=1;
