@@ -58,6 +58,19 @@
     z-index: 1;
     overflow: hidden;
 }
+#middleTop {
+  width: 40%;
+  height: 200px;
+  background-image: url('NYC.png');
+  background-size: 50% 100%;
+  background-position: 0px 0px;
+  border: 10px solid rgb(0, 0, 0);
+  position: fixed;
+  top: 0px;
+  left: calc(50% + 20px);
+  transform: translateX(-50%);
+  z-index: 10;
+}
 
 #middleArea {
     width: 40%;
@@ -68,7 +81,7 @@
     flex-direction: column;
     overflow-y: auto;
     position: absolute;
-    top: 0;
+    top: 210px;
     left: calc(50% + 20px);
     transform: translateX(-50%);
     z-index: 2;
@@ -100,6 +113,9 @@
     z-index: 4;
     transform: translate(-50%, -50%);
     transition: box-shadow 0.05s ease;
+    justify-content: center;
+    align-items: center;
+    display: flex
 
   }
   .bButton:hover {
@@ -112,5 +128,12 @@
     height: 5px;
     background-color: #1f2327;
     z-index: 3;
+}
+
+#BuildingB1IMG {
+  z-index: 6;
+  height: 60%;
+  width: 60%;
+  transform: translate(-3px, 0px);
 }
   

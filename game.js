@@ -34,7 +34,7 @@ trump.addEventListener("click", () => {
   Cash+=1;
   new Audio('Click.mp3').play();
   if (song==false)
-    sound.play();
+    //sound.play();
     song=true;
     sound.loop = true;
 });
