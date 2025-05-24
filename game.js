@@ -6,20 +6,20 @@ window.addEventListener('DOMContentLoaded', () => {
   let tSMultiplier=1;
   let Cash = 0;
   let song=false;
-  let summonSprites = ["Voter.png"];
+  let summonSprites = ["dollar_bill_1.png", "dollar_bill_2.png", "dollar_bill_3.png", "dollar_bill_4.png", "dollar_bill_5.png"];
 
   // Song Loop
   const sound = new Audio('Song.mp3');
   sound.volume = 0.5;
 
   const trump = document.getElementById("mainButtonImage");
-  console.log("trump found?", trump);
   const cash = document.getElementById('cash');
   const bButton = document.getElementsByClassName("bButton");
 
   // Event Listeners
   trump.addEventListener("mouseenter", () => {
     mainHover=true;
+    new Audio('Hover.mp3').play();
   });
 
   trump.addEventListener("mouseleave", () => {
@@ -46,6 +46,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   function summonFall() {
     let spriteIndex = Math.floor(Math.random() * (summonSprites.length));
+    console.log("spriteIndex", spriteIndex);
     const summon = document.createElement('img');
     document.getElementById('leftArea').appendChild(summon);
     summon.src = summonSprites[spriteIndex];
@@ -54,8 +55,9 @@ window.addEventListener('DOMContentLoaded', () => {
     const LAwidth = container.offsetWidth;
     summon.style.left = `${Math.random() * LAwidth-25}px`
     summon.style.top = `${-50}px`
-    summon.style.transform = 'rotate(0deg)';
-    summon.randomRot = Math.floor(Math.random() * 60 - 30);
+    Math.floor(Math.random() * 360) + 1;
+    summon.style.transform = `rotate(${Math.floor(Math.random() * 360) + 1}deg)`;
+    summon.randomRot = Math.floor(Math.random() * 241) - 120;;
     setTimeout(() => {
       summon.remove();
     }, 5000);
@@ -96,7 +98,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const summonedSprites = document.getElementsByClassName('summonClass');
     for (let sumn of summonedSprites) {
       let currentTop = parseFloat(sumn.style.top || '0');
-      currentTop += 600 * delta;
+      currentTop += 900 * delta;
       sumn.style.top = `${currentTop}px`;
       const transform = sumn.style.transform;
       let match = transform.match(/rotate\((-?\d+(?:\.\d+)?)deg\)/);
