@@ -12,13 +12,26 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;  
+    align-items: center;
+    z-index: 1;  
+}
+#leftAreaBorder {
+  width: 30%;
+  height: 1000px;
+  border: 10px solid black;
+  position: fixed;
+  top: -10px;
+  left: 0px;
+  z-index: 4;
+  background: none;
+  pointer-events: none; 
 }
 
 #banner {
     position: absolute;
     scale: 0.2;
     transform-origin: top center;
+    z-index: 3;
 }
 
 #mainButton {
@@ -27,13 +40,14 @@
     border: none;
     background-color: transparent;
     top: 115px;
-    z-index: 6;
+    z-index: 5;
 }
 
 #mainButtonImage {
     width: 250px;
     height: 250px;
     clip-path: ellipse(47% 50% at 49.5% 51%);
+    z-index: 5;
 }
 
 #cash {
@@ -42,7 +56,7 @@
     font-size: 50px;
     color: white;
     top: 70px;
-    z-index: 5;
+    z-index: 4;
 }
 #background {
     height: 1000px;
@@ -133,7 +147,14 @@
 #BuildingB1IMG {
   z-index: 6;
   height: 60%;
-  width: 60%;
+  width: 50%;
   transform: translate(-3px, 0px);
+}
+.summonClass {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  z-index: 2;
+  opacity: 0.5;
 }
   
