@@ -6,10 +6,10 @@ window.addEventListener('DOMContentLoaded', () => {
   let tSMultiplier=1;
   let Cash = 0;
   let song=false;
-  let summonSprites = ["dollar_bill_1.png", "dollar_bill_2.png", "dollar_bill_3.png", "dollar_bill_4.png", "dollar_bill_5.png"];
+  let summonSprites = ["Images/dollar_bill_1.png", "Images/dollar_bill_2.png", "Images/dollar_bill_3.png", "Images/dollar_bill_4.png", "Images/dollar_bill_5.png"];
 
   // Song Loop
-  const sound = new Audio('Song.mp3');
+  const sound = new Audio('Sounds/Song.mp3');
   sound.volume = 0.5;
 
   const trump = document.getElementById("mainButtonImage");
@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', () => {
   // Event Listeners
   trump.addEventListener("mouseenter", () => {
     mainHover=true;
-    new Audio('Hover.mp3').play();
+    new Audio('Sounds/Hover.mp3').play();
   });
 
   trump.addEventListener("mouseleave", () => {
@@ -28,7 +28,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   for (let btn of bButton) {
     btn.addEventListener("mouseenter", () => {
-      new Audio('Hover.mp3').play();
+      new Audio('Sounds/Hover.mp3').play();
     });
   }
 
@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', () => {
     tSMultiplier=tSMultiplier+0.15;
     Cash+=1;
     summonFall();
-    new Audio('Click.mp3').play();
+    new Audio('Sounds/Click.mp3').play();
     if (song==false) {
       //sound.play();
       song=true;

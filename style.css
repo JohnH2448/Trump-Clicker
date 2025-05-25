@@ -2,7 +2,7 @@
     width: 30%;
     height: 1000px;
     background-color: rgb(236, 209, 118);
-    background-image: url('texture.png');
+    background-image: url('Images/texture.png');
     background-size: 256px 128px;
     background-repeat: repeat;
     border: 10px solid black;
@@ -73,7 +73,7 @@
     width: 40%;
     position: fixed;
     image-rendering: pixelated;
-    background-image: url('SkyTile.png');
+    background-image: url('Images/SkyTile.png');
     background-repeat: repeat;
     background-size: 256px 256px;
     top: 0;
@@ -85,7 +85,7 @@
 #middleTop {
   width: 40%;
   height: 200px;
-  background-image: url('NYC.png');
+  background-image: url('Images/NYC.png');
   background-size: 50% 100%;
   background-position: 0px 0px;
   border: 10px solid rgb(0, 0, 0);
@@ -117,7 +117,7 @@
     position: relative;
     image-rendering: pixelated;
     background-color: #1f2327;
-    background-image: url('Frame7.png');
+    background-image: url('Images/Frame7.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -131,7 +131,7 @@
     max-width: 90px;
     height: 90px;
     image-rendering: pixelated;
-    background-image: url('BuildingButton2.png');
+    background-image: url('Images/BuildingButton2.png');
     background-size: 100% 100%;
     background-position: center;
     z-index: 4;
