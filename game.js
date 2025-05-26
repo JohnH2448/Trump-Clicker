@@ -22,12 +22,16 @@ window.addEventListener('DOMContentLoaded', () => {
   // Building Elements
   let Voters = 0;
   let voterCost = 100;
-  let memecoinCost= 1400;
+  let memecoinCost= 2500;
   let Memecoins = 0;
+  let golfCourseCost = 62500
+  let GolfCourses = 0;
   const BuildingB1 = document.getElementById("BuildingB1");
   const BuildingB2 = document.getElementById("BuildingB2");
   const voterCostElement = document.getElementById("voterCost");
   const memecoinCostElement = document.getElementById("memecoinCost");
+  const golfCourseCostElement = document.getElementById("golfCourseCost");
+
 
   // Event Listeners
   trump.addEventListener("mouseenter", () => {
@@ -52,8 +56,8 @@ window.addEventListener('DOMContentLoaded', () => {
       Voters++;
       console.log("Voters:", Voters);
       new Audio('Sounds/CashRegister.mp3').play();
-      voterCost=100*Math.pow(1.1, Voters);
-      voterCostElement.textContent = `${voterCost.toFixed(2)} Dollars`;
+      voterCost=Math.round(100*Math.pow(1.2, Voters));
+      voterCostElement.textContent = `${voterCost.toFixed(0)} Dollars`;
     }
   });
 
@@ -63,8 +67,19 @@ window.addEventListener('DOMContentLoaded', () => {
       Memecoins++;
       console.log("Memecoins:", Memecoins);
       new Audio('Sounds/CashRegister.mp3').play();
-      memecoinCost=1400*Math.pow(1.1, Memecoins);
-      memecoinCostElement.textContent = `${memecoinCost.toFixed(2)} Dollars`;
+      memecoinCost=Math.round(2500*Math.pow(1.2, Memecoins));
+      memecoinCostElement.textContent = `${memecoinCost.toFixed(0)} Dollars`;
+    }
+  });
+
+  BuildingB3.addEventListener("click", () => {
+    if (Cash >= golfCourseCost) {  
+      Cash -= golfCourseCost;
+      GolfCourses++;
+      console.log("Golf Courses:", GolfCourses);
+      new Audio('Sounds/CashRegister.mp3').play();
+      golfCourseCost=Math.round(62500*Math.pow(1.2, GolfCourses));
+      golfCourseCostElement.textContent = `${golfCourseCost.toFixed(0)} Dollars`;
     }
   });
 
@@ -127,7 +142,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Updates
     cashUpdate += 100*delta
-    CPS = (Voters*1+Memecoins*10)
+    CPS = (Voters*1+Memecoins*20+GolfCourses*400)
     if (cashUpdate >= 10) {
       Cash+=CPS/10;
       cashUpdate = 0;

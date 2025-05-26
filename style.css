@@ -160,6 +160,7 @@
   height: 60%;
   width: 50%;
   transform: translate(-3px, 0px);
+  image-rendering: pixelated;
 }
 #BuildingB2IMG {
   z-index: 6;
@@ -167,6 +168,7 @@
   width: 50%;
   transform: translate(0px, 0px);
   scale: 1.5;
+  image-rendering: pixelated;
 }
 .summonClass {
   height: 50px;
@@ -179,7 +181,7 @@
 
 .text-box {
   position: absolute;
-  top: 38%;
+  top: 33%;
   left: calc(20% + 30px);
   transform: translate(0px, -50%);
   font-family: 'Pixelify Sans', sans-serif;
@@ -194,11 +196,25 @@
 
 .Costs {
   position: absolute;
-  bottom: 12%;
+  bottom: 26%;
   left: calc(20% + 30px);
   transform: translate(0px, -50%);
   font-family: 'Pixelify Sans', sans-serif;
-  font-size: 25px;
+  font-size: 20px;
+  color: white;
+  text-shadow:
+  -2px -2px 0 black,
+    2px -2px 0 black,
+  -2px  2px 0 black,
+    2px  2px 0 black;
+}
+.CPSDisplay {
+  position: absolute;
+  bottom: 10%;
+  left: calc(20% + 30px);
+  transform: translate(0px, -50%);
+  font-family: 'Pixelify Sans', sans-serif;
+  font-size: 20px;
   color: white;
   text-shadow:
   -2px -2px 0 black,
@@ -220,6 +236,5 @@
   -2px -2px 0 black,
     2px -2px 0 black,
   -2px  2px 0 black,
-    2px  2px 0 black;
-  
+    2px  2px 0 black; 
 }
