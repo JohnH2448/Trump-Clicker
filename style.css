@@ -170,6 +170,22 @@
   scale: 1.5;
   image-rendering: pixelated;
 }
+#BuildingB3IMG {
+  z-index: 6;
+  height: 50%;
+  width: 50%;
+  transform: translate(0px, 0px);
+  scale: 1.5;
+  image-rendering: pixelated;
+}
+#BuildingB4IMG {
+  z-index: 6;
+  height: 50%;
+  width: 50%;
+  transform: translate(0px, 0px);
+  scale: 1.5;
+  image-rendering: pixelated;
+}
 .summonClass {
   height: 50px;
   width: 70px;
@@ -237,4 +253,19 @@
     2px -2px 0 black,
   -2px  2px 0 black,
     2px  2px 0 black; 
+}
+
+.Counter {
+  position: absolute;
+  top: 30%;
+  right: calc(5% + 10px);
+  transform: translate(0px, -50%);
+  font-family: 'Pixelify Sans', sans-serif;
+  font-size: 20px;
+  color: white;
+  text-shadow:
+  -2px -2px 0 black,
+    2px -2px 0 black,
+  -2px  2px 0 black,
+    2px  2px 0 black;
 }

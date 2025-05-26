@@ -10,10 +10,24 @@ window.addEventListener('DOMContentLoaded', () => {
   let CPS=0;
   let cashUpdate = 0;
 
+  // Format Number Function
+  function formatNumber(num) {
+    if (num >= 1e9) {
+        return (num / 1e9).toFixed(2) + 'B';
+    } else if (num >= 1e6) {
+        return (num / 1e6).toFixed(2) + 'M';
+    } else {
+        return num.toFixed(0);
+    }
+  }
+
   // Song Loop
   const sound = new Audio('Sounds/Song.mp3');
   sound.volume = 0.5;
-
+  const BuildingB1 = document.getElementById("BuildingB1");
+  const BuildingB2 = document.getElementById("BuildingB2");
+  const BuildingB3 = document.getElementById("BuildingB3");
+  const BuildingB4 = document.getElementById("BuildingB4");
   const trump = document.getElementById("mainButtonImage");
   const cash = document.getElementById('cash');
   const bButton = document.getElementsByClassName("bButton");
@@ -24,13 +38,18 @@ window.addEventListener('DOMContentLoaded', () => {
   let voterCost = 100;
   let memecoinCost= 2500;
   let Memecoins = 0;
-  let golfCourseCost = 62500
+  let golfCourseCost = 1562500;
+  let DOGECuts = 0;
+  let DOGECutCost = 62500;
   let GolfCourses = 0;
-  const BuildingB1 = document.getElementById("BuildingB1");
-  const BuildingB2 = document.getElementById("BuildingB2");
   const voterCostElement = document.getElementById("voterCost");
   const memecoinCostElement = document.getElementById("memecoinCost");
+  const DOGECutCostElement = document.getElementById("DOGECutCost");
   const golfCourseCostElement = document.getElementById("golfCourseCost");
+  const voterCountElement = document.getElementById("voterCount");
+  const memecoinCountElement = document.getElementById("memecoinCount");
+  const DOGECutCountElement = document.getElementById("DOGECutCount");
+  const golfCourseCountElement = document.getElementById("golfCourseCount");
 
 
   // Event Listeners
@@ -57,7 +76,8 @@ window.addEventListener('DOMContentLoaded', () => {
       console.log("Voters:", Voters);
       new Audio('Sounds/CashRegister.mp3').play();
       voterCost=Math.round(100*Math.pow(1.2, Voters));
-      voterCostElement.textContent = `${voterCost.toFixed(0)} Dollars`;
+      voterCostElement.textContent = `${formatNumber(voterCost)} Dollars`;
+      voterCountElement.textContent = `${Voters}`;
     }
   });
 
@@ -68,18 +88,32 @@ window.addEventListener('DOMContentLoaded', () => {
       console.log("Memecoins:", Memecoins);
       new Audio('Sounds/CashRegister.mp3').play();
       memecoinCost=Math.round(2500*Math.pow(1.2, Memecoins));
-      memecoinCostElement.textContent = `${memecoinCost.toFixed(0)} Dollars`;
+      memecoinCostElement.textContent = `${formatNumber(memecoinCost)} Dollars`;
+      memecoinCountElement.textContent = `${Memecoins}`;
     }
   });
 
   BuildingB3.addEventListener("click", () => {
+    if (Cash >= DOGECutCost) {  
+      Cash -= DOGECutCost;
+      DOGECuts++;
+      console.log("DOGE Cuts:", DOGECuts);
+      new Audio('Sounds/CashRegister.mp3').play();
+      DOGECutCost=Math.round(62500*Math.pow(1.2, DOGECuts));
+      DOGECutCostElement.textContent = `${formatNumber(DOGECutCost)} Dollars`;
+      DOGECutCountElement.textContent = `${DOGECuts}`;
+    }
+  });
+
+  BuildingB4.addEventListener("click", () => {
     if (Cash >= golfCourseCost) {  
       Cash -= golfCourseCost;
       GolfCourses++;
       console.log("Golf Courses:", GolfCourses);
       new Audio('Sounds/CashRegister.mp3').play();
-      golfCourseCost=Math.round(62500*Math.pow(1.2, GolfCourses));
-      golfCourseCostElement.textContent = `${golfCourseCost.toFixed(0)} Dollars`;
+      golfCourseCost=Math.round(1562500*Math.pow(1.2, GolfCourses));
+      golfCourseCostElement.textContent = `${formatNumber(golfCourseCost)} Dollars`;
+      golfCourseCountElement.textContent = `${GolfCourses}`;
     }
   });
 
@@ -142,13 +176,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Updates
     cashUpdate += 100*delta
-    CPS = (Voters*1+Memecoins*20+GolfCourses*400)
+    CPS = (Voters*1+Memecoins*20+DOGECuts*400+GolfCourses*8000)
     if (cashUpdate >= 10) {
       Cash+=CPS/10;
       cashUpdate = 0;
     }
     trump.style.transform = `scale(${trumpScale*tSMultiplier}) rotate(${(fluct1-0.5)*4}deg) translateY(${(fluct2-0.5)*6}px)`;
-    cash.textContent = `$${Cash.toFixed(0)}`;
+    cash.textContent = `$${formatNumber(Cash)}`;
     CPSElement.textContent = `CPS: ${CPS.toFixed(0)}`;
     // Debug
     
