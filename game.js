@@ -4,9 +4,12 @@ window.addEventListener('DOMContentLoaded', () => {
   let mainHover=false;
   let osc=0;
   let tSMultiplier=1;
-  let Cash = 0;
+  let Cash = 200;
   let song=false;
   let summonSprites = ["Images/dollar_bill_1.png", "Images/dollar_bill_2.png", "Images/dollar_bill_3.png", "Images/dollar_bill_4.png", "Images/dollar_bill_5.png"];
+  let Voters = 0;
+  let voterCost = 100;
+  let CPS=0;
 
   // Song Loop
   const sound = new Audio('Sounds/Song.mp3');
@@ -15,6 +18,8 @@ window.addEventListener('DOMContentLoaded', () => {
   const trump = document.getElementById("mainButtonImage");
   const cash = document.getElementById('cash');
   const bButton = document.getElementsByClassName("bButton");
+  const BuildingB1 = document.getElementById("BuildingB1");
+  const voterCostElement = document.getElementById("voterCost");
 
   // Event Listeners
   trump.addEventListener("mouseenter", () => {
@@ -31,6 +36,17 @@ window.addEventListener('DOMContentLoaded', () => {
       new Audio('Sounds/Hover.mp3').play();
     });
   }
+
+  BuildingB1.addEventListener("click", () => {
+    if (Cash >= voterCost) {  
+      Cash -= voterCost;
+      Voters++;
+      console.log("Voters:", Voters);
+      new Audio('Sounds/CashRegister.mp3').play();
+      voterCost=100*Math.pow(1.1, Voters);
+      voterCostElement.textContent = `${voterCost.toFixed(2)} Dollars`;
+    }
+  });
 
   trump.addEventListener("click", () => {
     tSMultiplier=tSMultiplier+0.15;
@@ -89,8 +105,9 @@ window.addEventListener('DOMContentLoaded', () => {
       trumpScale = trumpScale-delta;
 
     // Updates
+    Cash+=(Voters*1)*delta;
     trump.style.transform = `scale(${trumpScale*tSMultiplier}) rotate(${(fluct1-0.5)*4}deg) translateY(${(fluct2-0.5)*6}px)`;
-    cash.textContent = Cash;
+    cash.textContent = `$${Cash.toFixed(0)}`;
 
     // Debug
     
