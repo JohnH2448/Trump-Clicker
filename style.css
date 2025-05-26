@@ -161,6 +161,13 @@
   width: 50%;
   transform: translate(-3px, 0px);
 }
+#BuildingB2IMG {
+  z-index: 6;
+  height: 50%;
+  width: 50%;
+  transform: translate(0px, 0px);
+  scale: 1.5;
+}
 .summonClass {
   height: 50px;
   width: 70px;
@@ -185,7 +192,7 @@
     2px  2px 0 black;
 }
 
-#voterCost {
+.Costs {
   position: absolute;
   bottom: 12%;
   left: calc(20% + 30px);
@@ -198,4 +205,21 @@
     2px -2px 0 black,
   -2px  2px 0 black,
     2px  2px 0 black;
+}
+
+#CPS {
+  position: fixed;
+  bottom: 2%;
+  left: 2%;
+  transform: translate(0px, -50%);
+  font-family: 'Pixelify Sans', sans-serif;
+  font-size: 20px;
+  color: white;
+  z-index: 10;
+  text-shadow:
+  -2px -2px 0 black,
+    2px -2px 0 black,
+  -2px  2px 0 black,
+    2px  2px 0 black;
+  
 }

@@ -4,12 +4,11 @@ window.addEventListener('DOMContentLoaded', () => {
   let mainHover=false;
   let osc=0;
   let tSMultiplier=1;
-  let Cash = 200;
+  let Cash = 0;
   let song=false;
   let summonSprites = ["Images/dollar_bill_1.png", "Images/dollar_bill_2.png", "Images/dollar_bill_3.png", "Images/dollar_bill_4.png", "Images/dollar_bill_5.png"];
-  let Voters = 0;
-  let voterCost = 100;
   let CPS=0;
+  let cashUpdate = 0;
 
   // Song Loop
   const sound = new Audio('Sounds/Song.mp3');
@@ -18,8 +17,17 @@ window.addEventListener('DOMContentLoaded', () => {
   const trump = document.getElementById("mainButtonImage");
   const cash = document.getElementById('cash');
   const bButton = document.getElementsByClassName("bButton");
+  const CPSElement = document.getElementById("CPS");
+
+  // Building Elements
+  let Voters = 0;
+  let voterCost = 100;
+  let memecoinCost= 1400;
+  let Memecoins = 0;
   const BuildingB1 = document.getElementById("BuildingB1");
+  const BuildingB2 = document.getElementById("BuildingB2");
   const voterCostElement = document.getElementById("voterCost");
+  const memecoinCostElement = document.getElementById("memecoinCost");
 
   // Event Listeners
   trump.addEventListener("mouseenter", () => {
@@ -37,6 +45,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Buildings
   BuildingB1.addEventListener("click", () => {
     if (Cash >= voterCost) {  
       Cash -= voterCost;
@@ -48,6 +57,18 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  BuildingB2.addEventListener("click", () => {
+    if (Cash >= memecoinCost) {  
+      Cash -= memecoinCost;
+      Memecoins++;
+      console.log("Memecoins:", Memecoins);
+      new Audio('Sounds/CashRegister.mp3').play();
+      memecoinCost=1400*Math.pow(1.1, Memecoins);
+      memecoinCostElement.textContent = `${memecoinCost.toFixed(2)} Dollars`;
+    }
+  });
+
+  // Done
   trump.addEventListener("click", () => {
     tSMultiplier=tSMultiplier+0.15;
     Cash+=1;
@@ -105,10 +126,15 @@ window.addEventListener('DOMContentLoaded', () => {
       trumpScale = trumpScale-delta;
 
     // Updates
-    Cash+=(Voters*1)*delta;
+    cashUpdate += 100*delta
+    CPS = (Voters*1+Memecoins*10)
+    if (cashUpdate >= 10) {
+      Cash+=CPS/10;
+      cashUpdate = 0;
+    }
     trump.style.transform = `scale(${trumpScale*tSMultiplier}) rotate(${(fluct1-0.5)*4}deg) translateY(${(fluct2-0.5)*6}px)`;
     cash.textContent = `$${Cash.toFixed(0)}`;
-
+    CPSElement.textContent = `CPS: ${CPS.toFixed(0)}`;
     // Debug
     
     // Summon Falling
