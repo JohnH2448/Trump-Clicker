@@ -13,6 +13,8 @@ window.addEventListener('DOMContentLoaded', () => {
   // Format Number Function
   function formatNumber(num) {
     if (num >= 1e9) {
+      return (num / 1e12).toFixed(2) + 'T';
+    } else if (num >= 1e9) {
         return (num / 1e9).toFixed(2) + 'B';
     } else if (num >= 1e6) {
         return (num / 1e6).toFixed(2) + 'M';
@@ -24,6 +26,8 @@ window.addEventListener('DOMContentLoaded', () => {
   // Song Loop
   const sound = new Audio('Sounds/Song.mp3');
   sound.volume = 0.5;
+
+
   const BuildingB1 = document.getElementById("BuildingB1");
   const BuildingB2 = document.getElementById("BuildingB2");
   const BuildingB3 = document.getElementById("BuildingB3");
