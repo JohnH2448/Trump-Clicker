@@ -4,7 +4,7 @@ window.addEventListener('DOMContentLoaded', () => {
   let mainHover=false;
   let osc=0;
   let tSMultiplier=1;
-  let Cash = 0;
+  let Cash = 10000000000;
   let song=false;
   let summonSprites = ["Images/dollar_bill_1.png", "Images/dollar_bill_2.png", "Images/dollar_bill_3.png", "Images/dollar_bill_4.png", "Images/dollar_bill_5.png"];
   let CPS=0;
@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Format Number Function
   function formatNumber(num) {
-    if (num >= 1e9) {
+    if (num >= 1e12) {
       return (num / 1e12).toFixed(2) + 'T';
     } else if (num >= 1e9) {
         return (num / 1e9).toFixed(2) + 'B';
@@ -32,6 +32,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const BuildingB2 = document.getElementById("BuildingB2");
   const BuildingB3 = document.getElementById("BuildingB3");
   const BuildingB4 = document.getElementById("BuildingB4");
+  const BuildingB5 = document.getElementById("BuildingB5");
   const trump = document.getElementById("mainButtonImage");
   const cash = document.getElementById('cash');
   const bButton = document.getElementsByClassName("bButton");
@@ -46,14 +47,18 @@ window.addEventListener('DOMContentLoaded', () => {
   let DOGECuts = 0;
   let DOGECutCost = 62500;
   let GolfCourses = 0;
+  let F16s = 0;
+  let F16Cost= 39062500
   const voterCostElement = document.getElementById("voterCost");
   const memecoinCostElement = document.getElementById("memecoinCost");
   const DOGECutCostElement = document.getElementById("DOGECutCost");
   const golfCourseCostElement = document.getElementById("golfCourseCost");
+  const F16CostElement = document.getElementById("F16Cost");
   const voterCountElement = document.getElementById("voterCount");
   const memecoinCountElement = document.getElementById("memecoinCount");
   const DOGECutCountElement = document.getElementById("DOGECutCount");
   const golfCourseCountElement = document.getElementById("golfCourseCount");
+  const F16CountElement = document.getElementById("F16Count");
 
 
   // Event Listeners
@@ -121,6 +126,18 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  BuildingB5.addEventListener("click", () => {
+    if (Cash >= F16Cost) {  
+      Cash -= F16Cost;
+      F16s++;
+      console.log("F-16s:", F16s);
+      new Audio('Sounds/CashRegister.mp3').play();
+      F16Cost=Math.round(39062500*Math.pow(1.2, F16s));
+      F16CostElement.textContent = `${formatNumber(F16Cost)} Dollars`;
+      F16CountElement.textContent = `${F16s}`;
+    }
+  });
+
   // Done
   trump.addEventListener("click", () => {
     tSMultiplier=tSMultiplier+0.15;
@@ -180,14 +197,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Updates
     cashUpdate += 100*delta
-    CPS = (Voters*1+Memecoins*20+DOGECuts*400+GolfCourses*8000)
+    CPS = (Voters*1+Memecoins*20+DOGECuts*400+GolfCourses*8000+F16s*160000)
     if (cashUpdate >= 10) {
       Cash+=CPS/10;
       cashUpdate = 0;
     }
     trump.style.transform = `scale(${trumpScale*tSMultiplier}) rotate(${(fluct1-0.5)*4}deg) translateY(${(fluct2-0.5)*6}px)`;
     cash.textContent = `$${formatNumber(Cash)}`;
-    CPSElement.textContent = `CPS: ${CPS.toFixed(0)}`;
+    CPSElement.textContent = `CPS: ${formatNumber(CPS)}`;
     // Debug
     
     // Summon Falling

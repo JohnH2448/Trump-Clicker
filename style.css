@@ -14,6 +14,7 @@
     justify-content: center;
     align-items: center;
     z-index: 1;  
+    user-select: none;
 }
 #leftAreaBorder {
   width: 30%;
@@ -25,6 +26,7 @@
   z-index: 4;
   background: none;
   pointer-events: none; 
+  user-select: none;
 }
 
 #banner {
@@ -32,6 +34,7 @@
     scale: 0.2;
     transform-origin: top center;
     z-index: 3;
+    user-select: none;
 }
 
 #mainButton {
@@ -41,6 +44,7 @@
     background-color: transparent;
     top: 115px;
     z-index: 5;
+    user-select: none;
 }
 
 #mainButtonImage {
@@ -49,10 +53,12 @@
     clip-path: ellipse(47% 50% at 49.5% 51%);
     z-index: 5;
     transition: filter 0.1s ease;
+    user-select: none;
 }
 
 #mainButtonImage:hover {
   filter: brightness(1.1);
+  cursor: pointer;
 }
 
 #cash {
@@ -67,6 +73,7 @@
      2px -2px 0 black,
     -2px  2px 0 black,
      2px  2px 0 black;
+     user-select: none;
 }
 #background {
     height: 1000px;
@@ -81,6 +88,7 @@
     transform: translateX(-50%);
     z-index: 1;
     overflow: hidden;
+    user-select: none;
 }
 #middleTop {
   width: 40%;
@@ -94,6 +102,7 @@
   left: calc(50% + 20px);
   transform: translateX(-50%);
   z-index: 10;
+  user-select: none;
 }
 
 #middleArea {
@@ -109,6 +118,7 @@
     left: calc(50% + 20px);
     transform: translateX(-50%);
     z-index: 2;
+    user-select: none;
 }
 
 .mid {
@@ -122,6 +132,7 @@
   background-repeat: no-repeat;
   background-position: center;
   z-index: 3;
+  user-select: none;
 }
 .bButton {
   position: absolute;
@@ -139,7 +150,8 @@
   transition: box-shadow 0.05s ease;
   justify-content: center;
   align-items: center;
-  display: flex
+  display: flex;
+  user-select: none;
 
 }
 
@@ -153,6 +165,7 @@
   height: 5px;
   background-color: #1f2327;
   z-index: 3;
+  user-select: none;
 }
 
 #BuildingB1IMG {
@@ -161,6 +174,7 @@
   width: 50%;
   transform: translate(-3px, 0px);
   image-rendering: pixelated;
+  user-select: none;
 }
 #BuildingB2IMG {
   z-index: 6;
@@ -169,6 +183,7 @@
   transform: translate(0px, 0px);
   scale: 1.5;
   image-rendering: pixelated;
+  user-select: none;
 }
 #BuildingB3IMG {
   z-index: 6;
@@ -177,6 +192,7 @@
   transform: translate(0px, 0px);
   scale: 1.5;
   image-rendering: pixelated;
+  user-select: none;
 }
 #BuildingB4IMG {
   z-index: 6;
@@ -185,6 +201,16 @@
   transform: translate(0px, 0px);
   scale: 1.5;
   image-rendering: pixelated;
+  user-select: none;
+}
+#BuildingB5IMG {
+  z-index: 6;
+  height: 50%;
+  width: 50%;
+  transform: translate(0px, 0px);
+  scale: 1.5;
+  image-rendering: pixelated;
+  user-select: none;
 }
 .summonClass {
   height: 50px;
@@ -193,6 +219,7 @@
   z-index: 2;
   scale: 1.2;
   opacity: 0.8;
+  user-select: none;
 }
 
 .text-box {
