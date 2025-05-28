@@ -4,7 +4,7 @@ window.addEventListener('DOMContentLoaded', () => {
   let mainHover=false;
   let osc=0;
   let tSMultiplier=1;
-  let Cash = 10000000000;
+  let Cash = 0;
   let song=false;
   let summonSprites = ["Images/dollar_bill_1.png", "Images/dollar_bill_2.png", "Images/dollar_bill_3.png", "Images/dollar_bill_4.png", "Images/dollar_bill_5.png"];
   let CPS=0;
@@ -33,6 +33,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const BuildingB3 = document.getElementById("BuildingB3");
   const BuildingB4 = document.getElementById("BuildingB4");
   const BuildingB5 = document.getElementById("BuildingB5");
+  const BuildingB6 = document.getElementById("BuildingB6");
   const trump = document.getElementById("mainButtonImage");
   const cash = document.getElementById('cash');
   const bButton = document.getElementsByClassName("bButton");
@@ -49,17 +50,20 @@ window.addEventListener('DOMContentLoaded', () => {
   let GolfCourses = 0;
   let F16s = 0;
   let F16Cost= 39062500
+  let QJs = 0;
+  let QJCost = 976562500
   const voterCostElement = document.getElementById("voterCost");
   const memecoinCostElement = document.getElementById("memecoinCost");
   const DOGECutCostElement = document.getElementById("DOGECutCost");
   const golfCourseCostElement = document.getElementById("golfCourseCost");
   const F16CostElement = document.getElementById("F16Cost");
+  const QJCostElement = document.getElementById("QJCost");
   const voterCountElement = document.getElementById("voterCount");
   const memecoinCountElement = document.getElementById("memecoinCount");
   const DOGECutCountElement = document.getElementById("DOGECutCount");
   const golfCourseCountElement = document.getElementById("golfCourseCount");
   const F16CountElement = document.getElementById("F16Count");
-
+  const QJCountElement = document.getElementById("QJCount");
 
   // Event Listeners
   trump.addEventListener("mouseenter", () => {
@@ -138,6 +142,18 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  BuildingB6.addEventListener("click", () => {
+    if (Cash >= QJCost) {  
+      Cash -= QJCost;
+      QJs++;
+      console.log("Qatari Jets:", QJs);
+      new Audio('Sounds/CashRegister.mp3').play();
+      QJCost=Math.round(976562500*Math.pow(1.2, QJs));
+      QJCostElement.textContent = `${formatNumber(QJCost)} Dollars`;
+      QJCountElement.textContent = `${QJs}`;
+    }
+  });
+
   // Done
   trump.addEventListener("click", () => {
     tSMultiplier=tSMultiplier+0.15;
@@ -197,7 +213,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Updates
     cashUpdate += 100*delta
-    CPS = (Voters*1+Memecoins*20+DOGECuts*400+GolfCourses*8000+F16s*160000)
+    CPS = (Voters*1+Memecoins*20+DOGECuts*400+GolfCourses*8000+F16s*160000+3200000*QJs)
     if (cashUpdate >= 10) {
       Cash+=CPS/10;
       cashUpdate = 0;
